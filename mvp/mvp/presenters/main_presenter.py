@@ -11,3 +11,17 @@ class MainPresenter(MainContract.Presenter):
         self.note_repository = note_repository
 
     # Your code here
+    def get_all_notes(self):
+        # Return all notes
+        self.view.update_view(self.note_repository.get_all_notes())
+
+    def add_note(self, note: str):
+        # Add note
+        self.note_repository.add_note(note)
+        self.view.update_view(self.note_repository.get_all_notes())
+
+    def clear_all(self):
+        # Clear all note
+        self.note_repository.clear_all_notes()
+        self.view.update_view(self.note_repository.get_all_notes())
+        
