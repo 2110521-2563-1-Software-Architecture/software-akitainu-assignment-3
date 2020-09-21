@@ -20,10 +20,10 @@ class MainViewModel:
         # Add note and emit event with new data to the subject
         # Your code here
         self.note_repository.add_note(note)
-        self.note_behavior_subject.pipe(ops.take())
+        self.note_behavior_subject.on_next(self.note_repository.get_all_notes())
 
     def clear_all(self):
         # Clear all note and emit event with new data to the subject
         # Your code here
         self.note_repository.clear_all_notes()
-        self.note_behavior_subject.pipe(ops.take())
+        self.note_behavior_subject.on_next(self.note_repository.get_all_notes())
