@@ -49,15 +49,19 @@ class MainView(BaseView):
     def on_clear_all_button_clicked(self, e):
         # Clear all note
         # Your code here
+        self.controller.clear_all()
+
         # Update view
         # Your code here
-        pass
+        self.update_view(self.controller.get_all_notes())
 
     def on_add_note_button_clicked(self, e):
         content = self.note_input.GetValue()
         self.note_input.SetValue("")
         # Add new note
         # Your code here
+        self.controller.add_note(content)
+
         # Update view
         # Your code here
-        pass
+        self.update_view(self.controller.get_all_notes())
